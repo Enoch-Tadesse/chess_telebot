@@ -9,12 +9,14 @@ TOKEN = os.getenv('TELEGRAM_API_TOKEN')
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
-    await context.bot.send_message(chat_id, "hello sir")
+    message = "Hello there! 👋 I'm your Chess Assistant Bot. \nI'm here to provide you with real-time chess stats, leaderboard info, and recent game highlights. \nLet me know what you'd like to explore! 🎯\nSend /help for assistance."
+    await context.bot.send_message(chat_id, message)
 
 
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
-    await context.bot.send_message(chat_id, "help is on the way sir.")
+    message = "Need assistance? 🤔 I'm here to help! Here's what I can do \n/stats [username] - Get player stats\n/leaderboard - See the top players\n/game [username] - Check the latest games of a player "
+    await context.bot.send_message(chat_id, message)
 
 
 async def leaderboard(update: Update, context: ContextTypes.DEFAULT_TYPE):
