@@ -30,14 +30,18 @@ def get_player_game(username):
     games = response["games"]
     games.reverse()
     text = []
-    for i in range(10):
+    for i in range(min(len(games),10)):
         white = games[i]['white']
         black = games[i]['black']
+
         pgn = games[i]['pgn']
         result_start = pgn.find("[Termination") + len("[Termination") + 2
+
+        game_link = games[i]["url"]
+
         result_end = pgn.find("]", result_start) - 1
         result = pgn[result_start:result_end]
-        text.append(f"{i+1}. white🐻‍❄️: {white['username']}({white['rating']}) vs ({white['rating']}){black['username']} :⬛black\nresult: {result}")
+        text.append(f"{i+1}. white🐻‍❄️: {white['username']}({white['rating']}) vs ({white['rating']}){black['username']} :⬛black\nresult: {result}\nGame Link: {game_link}")
     return text
     # return f"white🐻‍❄️: {white['username']}({white['rating']}) vs ({white['rating']}){black['username']} :⬛black\nresult: {result}"
 
