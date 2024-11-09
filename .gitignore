@@ -1,0 +1,6 @@
+.env
+/shelf/
+/workspace.xml
+/.idea/
+/__pycahce__/
+/venv/

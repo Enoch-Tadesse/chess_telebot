@@ -1,7 +1,11 @@
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from telegram import Update
 import chessAPI
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+TOKEN = os.getenv('TELEGRAM_API_TOKEN')
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
@@ -43,7 +47,7 @@ async def get_games(update: Update, context):
 
 
 if __name__ == '__main__':
-    application = ApplicationBuilder().token('7218643432:AAEWVS9zlosNMJqCn8tea2_GQ5iQ3zVW8x8').build()
+    application = ApplicationBuilder().token(TOKEN).build()
     start_handler = CommandHandler('start', start)
     help_handler = CommandHandler('help', help)
     stats_handler = CommandHandler('stats', stats)
